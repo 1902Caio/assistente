@@ -15,7 +15,7 @@ flowchart TD
     IA --> Python
     Python --> DB
     Python --> MetaAPI
-    MetaAPI --> Cliente
+    MetaAPI --> Cliente``` 
 
 
 ---
