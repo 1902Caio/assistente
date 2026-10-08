@@ -32,24 +32,7 @@ flowchart TD
     Python -- "7. Retorna Sucesso" --> MetaAPI
     MetaAPI -- "8. Confirmação" --> Cliente
 
-classDiagram
-    class USUARIOS {
-        +String telefone (PK)
-        +String nome_negocio
-        +Timestamp data_cadastro
-    }
-    class CATEGORIAS {
-        +Int id_categoria (PK)
-        +String telefone_dono (FK)
-        +String nome_categoria
-    }
-    class GASTOS {
-        +Int id_gasto (PK)
-        +String telefone_dono (FK)
-        +Int id_categoria (FK)
-        +Decimal valor
-        +String descricao
-        +Timestamp data_hora
+
     }
     USUARIOS "1" --> "*" CATEGORIAS : cria
     USUARIOS "1" --> "*" GASTOS : registra
