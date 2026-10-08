@@ -16,4 +16,4 @@ flowchart TD
     Python --> DB
     Python --> MetaAPI
     MetaAPI --> Cliente
-![Diagrama Entidade-Relacionamento](./assistente.pdf)
+![Diagrama Entidade-Relacionamento](./assistente.jpg)
