@@ -13,7 +13,7 @@ flowchart TD
 ```
 
 ---
-
+## 🗄️ 2. Modelagem de Dados (DER)
 ```mermaid
 erDiagram
     USUARIOS ||--o{ CATEGORIAS : possui
