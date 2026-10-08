@@ -23,42 +23,36 @@ flowchart TD
     DB[(🗄️ Banco de Dados PostgreSQL)]:::banco
 
     %% Fluxo de Ações
-    Cliente -- "1. Envia msg ('Gastei 50 com luz')" --> MetaAPI
-    MetaAPI -- "2. Dispara Webhook (JSON)" --> Python
-    Python -- "3. Valida telefone da conta" --> DB
-    Python -- "4. Envia texto bruto" --> IA
-    IA -- "5. Devolve {valor: 50.00, desc: 'luz'}" --> Python
-    Python -- "6. Registra Gasto e Categoria" --> DB
-    Python -- "7. Retorna msg de Sucesso" --> MetaAPI
-    MetaAPI -- "8. Confirmação pro Cliente" --> Cliente
+    Cliente -- "1. Envia msg" --> MetaAPI
+    MetaAPI -- "2. Dispara Webhook" --> Python
+    Python -- "3. Valida telefone" --> DB
+    Python -- "4. Envia texto" --> IA
+    IA -- "5. Retorna JSON" --> Python
+    Python -- "6. Registra Gasto" --> DB
+    Python -- "7. Retorna Sucesso" --> MetaAPI
+    MetaAPI -- "8. Confirmação" --> Cliente
 
 
 erDiagram
-    %% Relacionamentos
-    USUARIOS ||--o{ CATEGORIAS : "cria"
-    USUARIOS ||--o{ GASTOS : "registra"
-    CATEGORIAS ||--o{ GASTOS : "classifica"
-
-    %% Tabela Usuarios
     USUARIOS {
-        varchar(20) telefone PK "Chave Primária (WhatsApp)"
-        varchar(100) nome_negocio
+        string telefone PK
+        string nome_negocio
         timestamp data_cadastro
     }
-
-    %% Tabela Categorias
     CATEGORIAS {
-        serial id_categoria PK
-        varchar(20) telefone_dono FK "Ref: Usuarios"
-        varchar(50) nome_categoria
+        int id_categoria PK
+        string telefone_dono FK
+        string nome_categoria
     }
-
-    %% Tabela Gastos
     GASTOS {
-        serial id_gasto PK
-        varchar(20) telefone_dono FK "Ref: Usuarios"
-        integer id_categoria FK "Ref: Categorias"
-        decimal(10_2) valor
-        varchar(255) descricao
+        int id_gasto PK
+        string telefone_dono FK
+        int id_categoria FK
+        decimal valor
+        string descricao
         timestamp data_hora
     }
+
+    USUARIOS ||--o{ CATEGORIAS : possui
+    USUARIOS ||--o{ GASTOS : registra
+    CATEGORIAS ||--o{ GASTOS : classifica
