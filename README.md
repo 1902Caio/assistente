@@ -31,28 +31,3 @@ flowchart TD
     Python -- "6. Registra Gasto" --> DB
     Python -- "7. Retorna Sucesso" --> MetaAPI
     MetaAPI -- "8. Confirmação" --> Cliente
-
-
-erDiagram
-    USUARIOS {
-        string telefone PK
-        string nome_negocio
-        timestamp data_cadastro
-    }
-    CATEGORIAS {
-        int id_categoria PK
-        string telefone_dono FK
-        string nome_categoria
-    }
-    GASTOS {
-        int id_gasto PK
-        string telefone_dono FK
-        int id_categoria FK
-        decimal valor
-        string descricao
-        timestamp data_hora
-    }
-
-    USUARIOS ||--o{ CATEGORIAS : possui
-    USUARIOS ||--o{ GASTOS : registra
-    CATEGORIAS ||--o{ GASTOS : classifica
