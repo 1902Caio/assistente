@@ -14,6 +14,30 @@ flowchart TD
 
 ---
 
-## 🗄️ 2. Modelagem de Dados (DER)
+```mermaid
+erDiagram
+    USUARIOS ||--o{ CATEGORIAS : possui
+    USUARIOS ||--o{ GASTOS : registra
+    CATEGORIAS ||--o{ GASTOS : classifica
 
-![Diagrama Entidade-Relacionamento](./der-assistente.jpg)
+    USUARIOS {
+        string telefone PK
+        string nome_negocio
+        datetime data_cadastro
+    }
+
+    CATEGORIAS {
+        int id_cat PK
+        string tel_dono FK
+        string nome_cat
+    }
+
+    GASTOS {
+        int id_gasto PK
+        string tel_dono FK
+        int id_cat FK
+        decimal valor
+        string descricao
+        datetime data_hora
+    }
+```
