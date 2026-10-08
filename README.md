@@ -31,3 +31,34 @@ flowchart TD
     Python -- "6. Registra Gasto e Categoria" --> DB
     Python -- "7. Retorna msg de Sucesso" --> MetaAPI
     MetaAPI -- "8. Confirmação pro Cliente" --> Cliente
+
+
+erDiagram
+    %% Relacionamentos
+    USUARIOS ||--o{ CATEGORIAS : "cria"
+    USUARIOS ||--o{ GASTOS : "registra"
+    CATEGORIAS ||--o{ GASTOS : "classifica"
+
+    %% Tabela Usuarios
+    USUARIOS {
+        varchar(20) telefone PK "Chave Primária (WhatsApp)"
+        varchar(100) nome_negocio
+        timestamp data_cadastro
+    }
+
+    %% Tabela Categorias
+    CATEGORIAS {
+        serial id_categoria PK
+        varchar(20) telefone_dono FK "Ref: Usuarios"
+        varchar(50) nome_categoria
+    }
+
+    %% Tabela Gastos
+    GASTOS {
+        serial id_gasto PK
+        varchar(20) telefone_dono FK "Ref: Usuarios"
+        integer id_categoria FK "Ref: Categorias"
+        decimal(10_2) valor
+        varchar(255) descricao
+        timestamp data_hora
+    }
