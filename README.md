@@ -1,27 +1,19 @@
-# 📱 Assistente Financeiro para Pequenos Comerciantes (WhatsApp Micro-SaaS)
-
-Sistema inteligente via WhatsApp para controle de despesas automatizado utilizando Inteligência Artificial, desenvolvido em Python (FastAPI) e PostgreSQL.
-
----
-
 ## 🏗️ 1. Arquitetura e Fluxo do Sistema
 
 ```mermaid
 flowchart TD
     Cliente([Cliente no WhatsApp]) --> MetaAPI[API Oficial WhatsApp]
-    MetaAPI --> Python[Back-end Python FastAPI]
+    MetaAPI --> Python[FastAPI Python de back-end]
     Python --> DB[(Banco PostgreSQL)]
     Python --> IA[Inteligência Artificial Gemini]
     IA --> Python
     Python --> DB
     Python --> MetaAPI
-    MetaAPI --> Cliente``` 
-
+    MetaAPI --> Cliente
+```
 
 ---
 
 ## 🗄️ 2. Modelagem de Dados (DER)
-
-Abaixo está o Diagrama Entidade-Relacionamento (DER) que representa a arquitetura relacional do banco de dados PostgreSQL, estruturando o relacionamento entre Usuários, Categorias e Gastos.
 
 ![Diagrama Entidade-Relacionamento](./der-assistente.jpg)
