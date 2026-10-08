@@ -16,4 +16,12 @@ flowchart TD
     Python --> DB
     Python --> MetaAPI
     MetaAPI --> Cliente
+
+
+---
+
+## 🗄️ 2. Modelagem de Dados (DER)
+
+Abaixo está o Diagrama Entidade-Relacionamento (DER) que representa a arquitetura relacional do banco de dados PostgreSQL, estruturando o relacionamento entre Usuários, Categorias e Gastos.
+
 ![Diagrama Entidade-Relacionamento](./der-assistente.jpg)
